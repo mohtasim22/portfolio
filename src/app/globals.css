@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+/* Make Tailwind's dark: prefix follow the "dark" class that next-themes puts on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --page: #f5f6fc;
+  --ink: #15161f;
+  --muted: #5d6070;
+  --card: #ffffff;
+  --edge: #15161f;
+  --pop-shadow: #15161f;
+  --blue: #2f4bff;
+  --orange: #ff5a36;
+  --yellow: #ffc531;
+  --green: #19c495;
+  --on-blue: #ffffff;
 }
 
+/* Dark theme: same names, different values */
+.dark {
+  --page: #11121a;
+  --ink: #f1f2fa;
+  --muted: #a3a6b8;
+  --card: #1b1d2a;
+  --edge: #f1f2fa;
+  --pop-shadow: #5a6bff;
+  --blue: #7083ff;
+  --orange: #ff7a5c;
+  --yellow: #ffd257;
+  --green: #3fdcb0;
+  --on-blue: #0b0c14;
+}
+
+/* Turn the variables into Tailwind classes: bg-page, text-ink, bg-pop-blue, shadow-pop... */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-page: var(--page);
+  --color-ink: var(--ink);
+  --color-ink-dark: #15161f; /* text on yellow, green and orange, in both themes */
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-edge: var(--edge);
+  --color-pop-blue: var(--blue);
+  --color-pop-orange: var(--orange);
+  --color-pop-yellow: var(--yellow);
+  --color-pop-green: var(--green);
+  --color-on-blue: var(--on-blue);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --font-display: var(--font-gabarito);
+  --font-sans: var(--font-manrope);
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --shadow-pop-sm: 2px 2px 0 var(--pop-shadow);
+  --shadow-pop: 3px 3px 0 var(--pop-shadow);
+  --shadow-pop-md: 5px 5px 0 var(--pop-shadow);
+  --shadow-pop-lg: 6px 6px 0 var(--pop-shadow);
 }
