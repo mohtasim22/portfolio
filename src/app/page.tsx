@@ -8,16 +8,12 @@ import { Ribbon } from "@/components/sections/ribbon";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-      <main className="overflow-x-clip">
-        <Hero />
-        <Ribbon />
-        <Projects />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <main className="overflow-x-clip">
+      <Hero />
+      <Ribbon />
+      <Projects />
+      <About />
+      <Contact />
+    </main>
   );
 }
