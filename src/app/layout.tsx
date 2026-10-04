@@ -26,7 +26,8 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${gabarito.variable} ${manrope.variable}`}
+      data-scroll-behavior="smooth"
+      className={`${gabarito.variable} ${manrope.variable} motion-safe:scroll-smooth`}
     >
       <body className="bg-page text-ink antialiased">
         <ThemeProvider
