@@ -16,6 +16,7 @@
   --yellow: #ffc531;
   --green: #19c495;
   --on-blue: #ffffff;
+  --card-shadow: #15161f;
 }
 
 /* Dark theme: same names, different values */
@@ -31,6 +32,7 @@
   --yellow: #ffd257;
   --green: #3fdcb0;
   --on-blue: #0b0c14;
+  --card-shadow: #f1f2fa;
 }
 
 /* Turn the variables into Tailwind classes: bg-page, text-ink, bg-pop-blue, shadow-pop... */
@@ -54,4 +56,24 @@
   --shadow-pop: 3px 3px 0 var(--pop-shadow);
   --shadow-pop-md: 5px 5px 0 var(--pop-shadow);
   --shadow-pop-lg: 6px 6px 0 var(--pop-shadow);
+
+  --shadow-card: 6px 6px 0 var(--card-shadow);
+  --shadow-card-lg: 10px 10px 0 var(--card-shadow);
+}
+
+/* Ribbon animation: gives you the class animate-marquee */
+@theme {
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* Dot pattern on project cards: gives you the class dots */
+@utility dots {
+  background-image: radial-gradient(rgb(255 255 255 / 0.24) 1.4px, transparent 1.6px);
+  background-size: 14px 14px;
 }
