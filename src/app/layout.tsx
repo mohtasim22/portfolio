@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { siteUrl } from "@/lib/site-url";
 import { site } from "@/data/site";
 import { buttonStyles } from "@/components/ui/button";
+import { Analytics } from "@vercel/analytics/next";
 
 const gabarito = Gabarito({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
