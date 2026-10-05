@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { siteUrl } from "@/lib/site-url";
 import { site } from "@/data/site";
+import { buttonStyles } from "@/components/ui/button";
 
 const gabarito = Gabarito({
   subsets: ["latin"],
@@ -40,7 +41,6 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -58,6 +58,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href="#main"
+            className={`${buttonStyles({ variant: "yellow", size: "sm" })} sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50`}
+          >
+            Skip to content
+          </a>
           <Navbar />
           {children}
           <Footer />

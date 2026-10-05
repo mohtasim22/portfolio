@@ -5,11 +5,14 @@ export function BrowserFrame({
   alt,
   url,
   sizes,
+  priority = false,
 }: {
   src: string;
   alt: string;
   url: string;
   sizes: string;
+  priority?: boolean;
+  
 }) {
   return (
     <figure className="overflow-hidden rounded-2xl border-2 border-edge bg-card shadow-pop-lg">
@@ -19,7 +22,16 @@ export function BrowserFrame({
         <span className="size-2.5 rounded-full bg-pop-green" />
         <span className="ml-2 truncate font-mono text-xs text-muted">{url}</span>
       </div>
-      <Image src={src} alt={alt} width={1600} height={1000} sizes={sizes} className="h-auto w-full" />
+       <Image
+        src={src}
+        alt={alt}
+        width={1600}
+        height={1000}
+        sizes={sizes}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        className="h-auto w-full"
+      />
     </figure>
   );
 }

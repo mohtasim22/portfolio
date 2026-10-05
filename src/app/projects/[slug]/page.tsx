@@ -20,12 +20,14 @@ export function generateStaticParams() {
 // Tab title and description for each project page
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
-export async function generateMetadata(props: ProjectPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: ProjectPageProps,
+): Promise<Metadata> {
   const { slug } = await props.params;
   const project = getProject(slug);
   if (!project) return {};
 
-    return {
+  return {
     title: project.name,
     description: project.caseStudy.overview,
     alternates: { canonical: `/projects/${project.slug}` },
@@ -37,11 +39,14 @@ export async function generateMetadata(props: ProjectPageProps): Promise<Metadat
       url: `/projects/${project.slug}`,
     },
   };
-
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight">{children}</h2>;
+  return (
+    <h2 className="mb-4 font-display text-3xl font-extrabold tracking-tight">
+      {children}
+    </h2>
+  );
 }
 
 export default async function ProjectPage(props: ProjectPageProps) {
@@ -69,19 +74,28 @@ export default async function ProjectPage(props: ProjectPageProps) {
           <h1 className="font-display text-[clamp(2.75rem,8vw,6rem)] font-extrabold leading-none tracking-[-0.035em]">
             {project.name}
           </h1>
-          <p className="mt-5 max-w-[52ch] text-lg opacity-90 sm:text-xl">{cs.overview}</p>
+          <p className="mt-5 max-w-[52ch] text-lg opacity-90 sm:text-xl">
+            {cs.overview}
+          </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={buttonStyles({ variant: project.color === "blue" ? "yellow" : "primary" })}
+                className={buttonStyles({
+                  variant: project.color === "blue" ? "yellow" : "primary",
+                })}
               >
                 Visit live site <ArrowUpRight className="size-4" />
               </a>
             )}
-            <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className={buttonStyles()}>
+            <a
+              href={project.codeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonStyles()}
+            >
               View code <ArrowUpRight className="size-4" />
             </a>
           </div>
@@ -94,13 +108,14 @@ export default async function ProjectPage(props: ProjectPageProps) {
           {cs.screenshots && cs.screenshots.length > 0 && (
             <section className="space-y-8">
               <h2 className="sr-only">Screenshots</h2>
-              {cs.screenshots.map((shot) => (
+              {cs.screenshots.map((shot, i) => (
                 <BrowserFrame
                   key={shot.src}
                   src={shot.src}
                   alt={shot.alt}
                   url={host}
                   sizes="(min-width: 1024px) 760px, 100vw"
+                  priority={i === 0}
                 />
               ))}
             </section>
@@ -116,7 +131,10 @@ export default async function ProjectPage(props: ProjectPageProps) {
             <ul className="grid gap-3">
               {cs.built.map((item) => (
                 <li key={item} className="flex gap-3 text-lg">
-                  <span aria-hidden className={`mt-1.5 size-3.5 shrink-0 rounded-[4px] border-2 border-edge ${colors.bg}`} />
+                  <span
+                    aria-hidden
+                    className={`mt-1.5 size-3.5 shrink-0 rounded-[4px] border-2 border-edge ${colors.bg}`}
+                  />
                   {item}
                 </li>
               ))}
@@ -126,7 +144,9 @@ export default async function ProjectPage(props: ProjectPageProps) {
           <section>
             <SectionTitle>The hardest part</SectionTitle>
             <div className="rounded-[22px] border-2 border-edge bg-card p-6 shadow-pop-lg">
-              <h3 className="font-display text-xl font-extrabold">{cs.hardest.title}</h3>
+              <h3 className="font-display text-xl font-extrabold">
+                {cs.hardest.title}
+              </h3>
               <p className="mt-3 text-muted">{cs.hardest.text}</p>
               {cs.hardest.code && (
                 <pre className="mt-5 overflow-x-auto rounded-xl border-2 border-edge bg-[#15161f] p-4 font-mono text-sm leading-relaxed text-[#e9eaf5]">
@@ -140,10 +160,15 @@ export default async function ProjectPage(props: ProjectPageProps) {
         {/* Sidebar: sticks while you scroll on large screens */}
         <aside className="space-y-6 lg:sticky lg:top-8 lg:self-start">
           <div className="rounded-2xl border-2 border-edge bg-card p-5 shadow-pop">
-            <h2 className="mb-3 font-display text-lg font-extrabold">Built with</h2>
+            <h2 className="mb-3 font-display text-lg font-extrabold">
+              Built with
+            </h2>
             <ul className="flex flex-wrap gap-2">
               {cs.stack.map((tech) => (
-                <li key={tech} className="rounded-[10px] border-2 border-edge px-2.5 py-1 font-display text-sm font-bold">
+                <li
+                  key={tech}
+                  className="rounded-[10px] border-2 border-edge px-2.5 py-1 font-display text-sm font-bold"
+                >
                   {tech}
                 </li>
               ))}
@@ -152,7 +177,9 @@ export default async function ProjectPage(props: ProjectPageProps) {
 
           {cs.demoLogins && cs.demoLogins.length > 0 && (
             <div className="rounded-2xl border-2 border-edge bg-card p-5 shadow-pop">
-              <h2 className="mb-3 font-display text-lg font-extrabold">Try it yourself</h2>
+              <h2 className="mb-3 font-display text-lg font-extrabold">
+                Try it yourself
+              </h2>
               <ul className="space-y-3 text-sm">
                 {cs.demoLogins.map((login) => (
                   <li key={login.role}>
@@ -175,7 +202,9 @@ export default async function ProjectPage(props: ProjectPageProps) {
         >
           <div>
             <p className="font-semibold opacity-80">Next project</p>
-            <p className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">{next.name}</p>
+            <p className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+              {next.name}
+            </p>
           </div>
           <ArrowRight className="size-8 shrink-0 transition group-hover:translate-x-1" />
         </Link>
