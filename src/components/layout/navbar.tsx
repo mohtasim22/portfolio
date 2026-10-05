@@ -8,7 +8,7 @@ export function Navbar() {
     <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-6 sm:px-8">
       <Link
         href="/"
-        className="inline-flex items-center gap-2.5 font-display text-[19px] font-extrabold"
+        className="inline-flex items-center gap-2.5 font-display text-[22px] font-extrabold"
       >
         <span className="grid size-8 rotate-[-8deg] place-items-center rounded-[9px] border-2 border-edge bg-pop-blue text-base text-on-blue">
           M

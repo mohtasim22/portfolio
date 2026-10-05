@@ -39,14 +39,18 @@ export function Hero() {
         </p>
 
         <h1 className="relative isolate max-w-[13ch] font-display text-[clamp(2.5rem,7vw,6rem)] font-extrabold leading-none tracking-[-0.035em] text-balance">
-          I build web apps you can <Highlight color="orange">pay,</Highlight>{" "}
-          <Highlight color="yellow">book</Highlight> and{" "}
-          <Highlight color="green">track</Highlight> with.
+          <span className="mb-3 block text-[0.5em] tracking-tight text-muted">
+            Got an app idea?
+          </span>
+          I&apos;ll <Highlight color="orange">build</Highlight> it,{" "}
+          <Highlight color="yellow">launch</Highlight> it and{" "}
+          <Highlight color="green">fix</Highlight> it.
         </h1>
 
         <p className="mb-7 mt-6 max-w-[46ch] text-lg text-muted sm:text-[19px]">
-          Hi, I&apos;m Mohtasim. I turn ideas into real products with Next.js, Express and
-          PostgreSQL, and I sweat the details that keep them working.
+          Hi, I&apos;m Mohtasim. I turn ideas into real products with Next.js,
+          Express and PostgreSQL, and I sweat the details that keep them
+          working.
         </p>
 
         <div className="flex flex-wrap gap-3">

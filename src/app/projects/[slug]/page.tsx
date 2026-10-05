@@ -7,6 +7,7 @@ import { projectColors } from "@/components/ui/project-colors";
 import { buttonStyles } from "@/components/ui/button";
 import { BrowserFrame } from "@/components/ui/browser-frame";
 import { Contact } from "@/components/sections/contact";
+import { site } from "@/data/site";
 
 // Only the slugs listed below exist; anything else is a 404
 export const dynamicParams = false;
@@ -24,10 +25,19 @@ export async function generateMetadata(props: ProjectPageProps): Promise<Metadat
   const project = getProject(slug);
   if (!project) return {};
 
-  return {
-    title: `${project.name} · Mohtasim Fahim`,
+    return {
+    title: project.name,
     description: project.caseStudy.overview,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      type: "article",
+      siteName: site.name,
+      title: `${project.name} · case study by Mohtasim Fahim`,
+      description: project.summary,
+      url: `/projects/${project.slug}`,
+    },
   };
+
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {

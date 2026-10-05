@@ -4,6 +4,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { siteUrl } from "@/lib/site-url";
+import { site } from "@/data/site";
 
 const gabarito = Gabarito({
   subsets: ["latin"],
@@ -16,10 +18,28 @@ const manrope = Manrope({
   variable: "--font-manrope",
 });
 
+const description =
+  "Got an app idea? I'm a full-stack developer in Dhaka who builds, launches and fixes web apps with Next.js, Express and PostgreSQL.";
+
 export const metadata: Metadata = {
-  title: "Mohtasim Fahim · Full-stack developer",
-  description: "I build web apps with Next.js, Express and PostgreSQL.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Mohtasim Fahim · Full-stack developer",
+    template: "%s · Mohtasim Fahim",
+  },
+  description,
+  authors: [{ name: site.name, url: site.github }],
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: "Mohtasim Fahim · Full-stack developer",
+    description,
+    url: "/",
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image" },
 };
+
 
 export default function RootLayout({
   children,
