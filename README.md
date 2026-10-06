@@ -2,9 +2,9 @@
 
 My personal portfolio: a playful, fast, fully static site built with Next.js 16.
 
-**Live:** [mohtasimfahim.com](https://mohtasimfahim.com)
+**Live:** [mohtasimfahim.com](https://www.mohtasimfahim.com)
 
-![Portfolio preview](https://mohtasimfahim.com/opengraph-image)
+![Portfolio preview](https://www.mohtasimfahim.com/opengraph-image)
 
 ## Features
 
